@@ -2,6 +2,7 @@ from socket import *
 import thread, time
 import index
 
+
 def recvMsg(sock):
     while True:
         recvmsg = sock.recv(1024)
@@ -59,8 +60,8 @@ def mainMenu():
         elif option == 3:
             print("")
         elif option == 4:
-            getDateTimeZ("")
-            print("")
+            index.getDateTimeZ()
+            #print("")
         elif option == 5:
             levantarCliente()
         elif option == 6:
