@@ -28,13 +28,15 @@ class ClientHandler(BaseRequestHandler):
         self.broadcast(self.connection())
 
         print '[%i users online]\n' % len(userlist)
-        for i in userlist:
-            print i.getsockname()
 
         while True:
             try:
                 data = self.request.recv(1024)
                 print '%s(%s): "%s"' % (self.nickname, self.client_address[0], data)
+                for i in userlist:
+                    ip = i.getpeername()[0]
+                    if ip != self.client_address[0]:
+                        i.send(data)
                 outgoing = '%s: %s' % (self.nickname, data)
                 self.broadcast(outgoing)
 
