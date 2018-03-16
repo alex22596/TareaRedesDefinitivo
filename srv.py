@@ -2,7 +2,7 @@ from time import *
 from SocketServer import *
 
 HOST = ''
-PORT = 8009
+PORT = 8008
 userlist = []
 namelist = []
 addr = (HOST, PORT)
@@ -28,6 +28,8 @@ class ClientHandler(BaseRequestHandler):
         self.broadcast(self.connection())
 
         print '[%i users online]\n' % len(userlist)
+        for i in userlist:
+            print i.getsockname()
 
         while True:
             try:

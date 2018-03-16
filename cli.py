@@ -1,12 +1,16 @@
 from socket import *
-import thread, time
+import thread
+import time
 import index
+import processLinux
+
 
 def recvMsg(sock):
     while True:
         recvmsg = sock.recv(1024)
         print
         '<Server>>> ' + recvmsg
+
 
 def levantarCliente():
     host = raw_input('Server IP: ')
@@ -62,7 +66,13 @@ def mainMenu():
         elif option == 3:
             index.getDateTimeZ()
         elif option == 4:
-            print("")
+            optionProcess = int(input("1. Windows\n"
+                  "2. Linux\n"
+                  "     Option: "))
+            if optionProcess == 1:
+                print()
+            elif optionProcess == 2:
+                processLinux.getProcess()
         elif option == 5:
             levantarCliente()
         elif option == 6:
