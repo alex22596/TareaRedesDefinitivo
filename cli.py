@@ -2,7 +2,6 @@ from socket import *
 import thread, time
 import index
 
-
 def recvMsg(sock):
     while True:
         recvmsg = sock.recv(1024)
@@ -15,9 +14,11 @@ def levantarCliente():
 
     host = host if (len(host) > 0) else ' '
     port = int(port) if (len(port) > 0) else ' '
+
     if host == ' ' or port == ' ':
         print 'IP or Port invalid'
         mainMenu()
+
     try:
         s = socket(AF_INET, SOCK_STREAM)
         s.connect((host, port))
@@ -39,6 +40,7 @@ def levantarCliente():
             s.send(sendmsg)
 
         s.close()
+
     except:
         print
         'Wrong addres!'
@@ -48,20 +50,19 @@ def mainMenu():
     while True:
         option = int(input(" 1. Get client name   \n"
                               " 2. Get client IP     \n"
-                              " 3. Get quantity of running processes    \n"
-                              " 4. Get time from another country        \n"
+                              " 3. Get time from another country        \n"
+                              " 4. Get number of processes running on the server \n"
                               " 5. Send message client - server         \n"
                               " 6. Exit     \n"
                               "     Option: "))
         if option == 1:
-            print("Server Name: ",index.getHostName())
+            print("Server Name: ", index.getHostName())
         elif option ==2:
             print("Server IP: ", index.getHostIp())
         elif option == 3:
-            print("")
-        elif option == 4:
             index.getDateTimeZ()
-            #print("")
+        elif option == 4:
+            print("")
         elif option == 5:
             levantarCliente()
         elif option == 6:
