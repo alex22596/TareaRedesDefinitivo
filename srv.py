@@ -7,7 +7,6 @@ userlist = []
 namelist = []
 addr = (HOST, PORT)
 
-
 def now():
     return ctime(time())
 
@@ -24,8 +23,8 @@ class ClientHandler(BaseRequestHandler):
         self.setnick()
         sleep(3)
         print self.connection()
-        self.request.send(welcome())
-        self.broadcast(self.connection())
+        # self.request.send(welcome())
+        # self.broadcast(self.connection())
 
         print '[%i users online]\n' % len(userlist)
 
@@ -33,10 +32,6 @@ class ClientHandler(BaseRequestHandler):
             try:
                 data = self.request.recv(1024)
                 print '%s(%s): "%s"' % (self.nickname, self.client_address[0], data)
-                for i in userlist:
-                    ip = i.getpeername()[0]
-                    if ip != self.client_address[0]:
-                        i.send(data)
                 outgoing = '%s: %s' % (self.nickname, data)
                 self.broadcast(outgoing)
 

@@ -8,8 +8,7 @@ import processLinux
 def recvMsg(sock):
     while True:
         recvmsg = sock.recv(1024)
-        print
-        '<Server>>> ' + recvmsg
+        print "\n" + recvmsg
 
 
 def levantarCliente():
@@ -38,7 +37,7 @@ def levantarCliente():
         'Wait!...'
 
         while True:
-            sendmsg = raw_input(' - Send: ')
+            sendmsg = raw_input('')
             if sendmsg == 'exit()':
                 break
             s.send(sendmsg)
