@@ -1,11 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-'''
-Created on 2013. 8. 5.
-@author: kangstar
-'''
-
 from time import *
 from SocketServer import *
 
@@ -21,7 +13,7 @@ def now():
 
 
 def welcome():
-    return '''Welcome Kangstar Server
+    return '''Welcome CHATEC Server
     Local time is %s, %i user(s) online:%s
     ''' % (now(), len(userlist), repr(namelist))
 
