@@ -9,13 +9,13 @@ def recvMsg(sock):
         '<Server>>> ' + recvmsg
 
 def levantarCliente():
-    host = raw_input('IP del servidor: ')
-    port = raw_input('Puerto del servidor: ')
+    host = raw_input('Server IP: ')
+    port = raw_input('Server Port: ')
 
     host = host if (len(host) > 0) else ' '
     port = int(port) if (len(port) > 0) else ' '
     if host == ' ' or port == ' ':
-        print 'Ingrese una IP o un puerto valido'
+        print 'IP or Port invalid'
         mainMenu()
     try:
         s = socket(AF_INET, SOCK_STREAM)
@@ -24,7 +24,7 @@ def levantarCliente():
         thread.start_new_thread(recvMsg, (s,))
 
         time.sleep(1)
-        nickmsg = raw_input('Mi nombre: ')
+        nickmsg = raw_input('My nickname: ')
         s.send(nickmsg)
 
         time.sleep(2)
@@ -32,7 +32,7 @@ def levantarCliente():
         'Wait!...'
 
         while True:
-            sendmsg = raw_input(' - Enviar: ')
+            sendmsg = raw_input(' - Send: ')
             if sendmsg == 'exit()':
                 break
             s.send(sendmsg)
@@ -40,14 +40,13 @@ def levantarCliente():
         s.close()
     except:
         print
-        'Direccion incorrecta!'
-    raw_input('Cliente Saliendo (Presione una tecla!)')
+        'Wrong addres!'
+    raw_input('Bye Client (press a key!)')
 
 def mainMenu():
-    print(".::Welcome to CHATEC::.")
     while True:
-        option = int(input(" 1. Get server name   \n"
-                              " 2. Get server IP     \n"
+        option = int(input(" 1. Get client name   \n"
+                              " 2. Get client IP     \n"
                               " 3. Get quantity of running processes    \n"
                               " 4. Get time from another country        \n"
                               " 5. Send message client - server         \n"
