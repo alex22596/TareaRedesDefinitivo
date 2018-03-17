@@ -3,6 +3,7 @@ import thread
 import time
 import index
 import processLinux
+import processWindows
 
 
 def recvMsg(sock):
@@ -69,7 +70,7 @@ def mainMenu():
                   "2. Linux\n"
                   "     Option: "))
             if optionProcess == 1:
-                print()
+                processWindows.getProcess()
             elif optionProcess == 2:
                 processLinux.getProcess()
         elif option == 5:
